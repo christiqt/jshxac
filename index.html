@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>secret</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="question">Pogi ba ako Jshxac?</h1>
+  <div id="answers">
+    <button onclick="handleAnswer('yes')">Yes</button>
+    <button onclick="handleAnswer('no')">No</button>
+  </div>
+  <div id="nextPrompt" style="display: none;">
+    <p id="response"></p>
+    <button onclick="goToImages()">Next</button>
+  </div>
+
+  <script>
+    function handleAnswer(answer) {
+      const question = document.getElementById('question');
+      const response = document.getElementById('response');
+      const answers = document.getElementById('answers');
+      const nextPrompt = document.getElementById('nextPrompt');
+
+      if (question.innerText === 'Pogi ba ako Jshxac?') {
+        question.innerText = 'Miss mo ba ako?';
+        response.innerText = '';
+      } else if (question.innerText === 'Miss mo ba ako?') {
+        if (answer === 'no') {
+          response.innerText = 'Ay, ang pangit mo, miss pa naman kita HAHAHA';
+        } else if (answer === 'yes') {
+          response.innerText = 'Ayannn, tama yan';
+        }
+        answers.style.display = 'none';
+        nextPrompt.style.display = 'block';
+      }
+    }
+
+    function goToImages() {
+      window.location.href = 'images.html'; // Navigate to the images file
+    }
+  </script>
+</body>
+</html>
